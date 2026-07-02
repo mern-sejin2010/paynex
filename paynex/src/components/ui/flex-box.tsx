@@ -7,7 +7,8 @@ export default function Flexbox ({
     align = '',
     justify = '',
     gap = 0,
-    ...sx
+    className,
+    sx,
 } : {
     children?: ReactNode;
     direction?: 'row' | 'column' | 'column-reverse' | 'row-reverse';
@@ -15,10 +16,13 @@ export default function Flexbox ({
     align?: string | object | 'start' | 'center' | 'end';
     justify?: string | object;
     gap?: number | string | object;
+    className?: string;
+    sx?: object;
 }) {
     return (
         <Stack
             direction={direction}
+            className={className}
             sx={{
                 display: display,
                 alignItems: align,

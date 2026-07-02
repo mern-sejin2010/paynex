@@ -1,23 +1,28 @@
-import Link from "next/link";
+'use client';
+import Link from 'next/link';
 import { ReactNode } from 'react';
-import { usePathname } from "next/navigation";
+import { usePathname } from 'next/navigation';
 import Button from '@mui/material/Button';
+import { SxProps } from '@mui/material';
 export default function CustomLink ({
     children,
     href,
-    className,
+    className = 'link',
     target,
     id,
+    sx,
     ...props
 } : {
     children?: ReactNode;
-    href?: string;
+    href: string;
     className?: string;
     target?: string;
     id?: string;
+    sx?: SxProps;
 }) {
     const pathname = usePathname();
-    const linkClass = '';
+    const isActive = (href === pathname) || pathname.startsWith(`${href}/`);
+    const linkClass = isActive ? `${className} active` : className;
     return (
         <Link 
             href={href} 
@@ -26,7 +31,7 @@ export default function CustomLink ({
             id={id}
             {...props}
         >
-            <Button>
+            <Button sx={sx}>
                 { children }
             </Button>
         </Link>

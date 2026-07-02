@@ -28,5 +28,13 @@ export const theme = createTheme({
                 },
             },
         },
+        MuiDivider: {
+            styleOverrides: {
+                root: {
+                    borderTop: '1px solid var(--border)',
+                    margin: '12px 0px',
+                },
+            },
+        },
     },
 });

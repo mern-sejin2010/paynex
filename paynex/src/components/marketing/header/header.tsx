@@ -1,22 +1,15 @@
-import { Logo } from "@/assets/images";
-import { Flexbox } from "@/components/ui";
-import { Box, Button, Container, Stack, Typography } from "@mui/material";
-import Image from "next/image";
-import Link from "next/link";
-
-import WebBrand from "./web-brand";
-import Navbar from "./navbar/desktop";
-import AuthRoutes from "./auth-routes";
-import DesktopNavbar from "./navbar/desktop";
-
+import { Box, Container } from '@mui/material';
+import { Flexbox } from '@/components/ui';
+import WebBrand from './web-brand';
+import AuthRoutes from './auth-routes';
+import DesktopNavbar from './navbar/desktop';
+import MobileNavbar from './navbar/mobile';
 export default function Header () {
     return (
-        <Box component='header' sx={{
-            py: 1,
-            background: '#fff',
-            position: 'sticky',
-            top: 0,
-        }}>
+        <Box 
+            component='header' 
+            sx={styles.header}
+        >
             <Container maxWidth='xl'>
                 <Flexbox 
                     align='center' 
@@ -24,9 +17,18 @@ export default function Header () {
                 >
                     <WebBrand/>
                     <DesktopNavbar/>
+                    <MobileNavbar/>
                     <AuthRoutes/>
                 </Flexbox>
             </Container>
         </Box>
     );
+};
+const styles = {
+    header: {
+        py: 2,
+        background: '#fff',
+        position: 'sticky',
+        top: 0,
+    },
 };
